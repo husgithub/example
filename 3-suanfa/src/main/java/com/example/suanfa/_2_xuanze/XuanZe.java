@@ -21,8 +21,7 @@ public class XuanZe {
         return minIndex;
     }
 
-    public int[] sort(Integer[] array) {
-        int[] newArr = new int[array.length];
+    public void sort(Integer[] array) {
         int i = 0;
         while (i < array.length - 1) {
             //找出最小的数交换位置
@@ -32,12 +31,33 @@ public class XuanZe {
             array[i] = temp;
             i++;
         }
-        return newArr;
+    }
+
+    /**
+     * 选择排序
+     * 其他实现
+     *
+     * @param array
+     */
+    public void selectionSort(Integer[] array) {
+        int i = 0;
+        int j = i + 1;
+        int minIndex = i;
+        for (i = 0; i < array.length - 1; i++) {
+            for (j = i + 1; j < array.length; j++) {
+                if (array[j] < array[minIndex]) {
+                    minIndex = j;
+                }
+            }
+            int temp = array[minIndex];
+            array[minIndex] = array[i];
+            array[i] = temp;
+        }
     }
 
     public static void main(String[] args) {
         Integer[] a = {12, 4, 5, 8};
-        new XuanZe().sort(a);
+        new XuanZe().selectionSort(a);
         for (int i = 0; i < a.length; i++) {
             System.out.print(a[i] + ",");
         }
