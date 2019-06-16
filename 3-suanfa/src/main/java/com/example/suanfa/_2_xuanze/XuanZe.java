@@ -1,19 +1,21 @@
 package com.example.suanfa._2_xuanze;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * 选择排序
+ * 思想：
+ * ①找出数组中最小的数
+ * ②将最小的数排到最前(也就是交换位置)，这样就排好一位数了
+ * ③下一次只需要对剩下的数进行排序
  */
 public class XuanZe {
 
-    public int getMinIndex(Integer[] array) {
-        int minIndex = 0;
-        for (int i = 1; i < array.length; i++) {
-            if (array[i] < array[minIndex]) {
+    public int getMinIndex(Integer[] array, int startIndex) {
+        int minIndex = startIndex;
+        int small = array[minIndex];
+        for (int i = startIndex; i < array.length; i++) {
+            if (array[i] < small) {
                 minIndex = i;
-                return minIndex;
+                small = array[i];
             }
         }
         return minIndex;
@@ -22,15 +24,12 @@ public class XuanZe {
     public int[] sort(Integer[] array) {
         int[] newArr = new int[array.length];
         int i = 0;
-        while (array.length > 0) {
-            int minIndex = getMinIndex(array);
-            newArr[i] = array[minIndex];
-            List<Integer> list = new ArrayList<>();
-            for (int j = 0; j < array.length; j++) {
-                list.add(array[j]);
-            }
-            list.remove(minIndex);
-            array = list.toArray(new Integer[array.length - 1]);
+        while (i < array.length - 1) {
+            //找出最小的数交换位置
+            int minIndex = getMinIndex(array, i);
+            int temp = array[minIndex];
+            array[minIndex] = array[i];
+            array[i] = temp;
             i++;
         }
         return newArr;
@@ -38,9 +37,9 @@ public class XuanZe {
 
     public static void main(String[] args) {
         Integer[] a = {12, 4, 5, 8};
-        int[] sortArr = new XuanZe().sort(a);
-        for (int i = 0; i < sortArr.length; i++) {
-            System.out.print(sortArr[i] + ",");
+        new XuanZe().sort(a);
+        for (int i = 0; i < a.length; i++) {
+            System.out.print(a[i] + ",");
         }
     }
 }
