@@ -15,7 +15,7 @@ public class MaoPao {
     public void sortFromSmallToLarge(int[] array) {
         for (int i = array.length - 1; i > 0; i--) {
             for (int j = 0; j < i; j++) {
-                if (array[j] < array[j + 1]) {
+                if (array[j] > array[j + 1]) {
                     int temp = array[j + 1];
                     array[j + 1] = array[j];
                     array[j] = temp;
@@ -32,7 +32,7 @@ public class MaoPao {
     public void sortFromLargeToSmall(int[] array) {
         for (int i = array.length - 1; i > 0; i--) {
             for (int j = 0; j < i; j++) {
-                if (array[j] > array[j + 1]) {
+                if (array[j] < array[j + 1]) {
                     int temp = array[j + 1];
                     array[j + 1] = array[j];
                     array[j] = temp;
