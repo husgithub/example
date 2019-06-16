@@ -4,18 +4,19 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.hs.example</groupId>
-	<artifactId>example</artifactId>
-	<version>1.0.0</version>
-	<packaging>pom</packaging>
+	<artifactId>2-aop</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 
-	<name>example</name>
-	<description>example</description>
+	<name>2-aop</name>
+	<description>2-aop</description>
 
 	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.2.3.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<groupId>com.hs.example</groupId>
+		<artifactId>example</artifactId>
+		<version>1.0.0</version>
+		<!--去掉-->
+		<!--<relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
 	</parent>
 
 	<properties>
@@ -23,12 +24,6 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 	</properties>
-
-	<modules>
-		<module>1-java-proxy</module>
-		<module>2-aop</module>
-		<module>3-suanfa</module>
-	</modules>
 
 	<dependencies>
 		<dependency>
@@ -41,6 +36,12 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
+
 	</dependencies>
 
 	<build>
