@@ -40,10 +40,9 @@ public class XuanZe {
      * @param array
      */
     public void selectionSort(Integer[] array) {
-        int i = 0;
-        int j = i + 1;
-        int minIndex = i;
+        int i, j, minIndex;
         for (i = 0; i < array.length - 1; i++) {
+            minIndex = i;
             for (j = i + 1; j < array.length; j++) {
                 if (array[j] < array[minIndex]) {
                     minIndex = j;
@@ -56,7 +55,7 @@ public class XuanZe {
     }
 
     public static void main(String[] args) {
-        Integer[] a = {12, 4, 5, 8};
+        Integer[] a = {85, 9, 45, 123, 9, 5, 231, 3, 22, 66, 77};
         new XuanZe().selectionSort(a);
         for (int i = 0; i < a.length; i++) {
             System.out.print(a[i] + ",");
