@@ -25,6 +25,7 @@
 	</properties>
 
 	<modules>
+		<module>1-java-base</module>
 		<module>1-java-proxy</module>
 		<module>2-aop</module>
 		<module>3-suanfa</module>

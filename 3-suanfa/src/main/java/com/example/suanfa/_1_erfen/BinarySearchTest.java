@@ -3,7 +3,7 @@ package com.example.suanfa._1_erfen;
 /**
  * 二分查找法
  */
-public class ErFenTest {
+public class BinarySearchTest {
 
     private static final int[] array = new int[1025];
 

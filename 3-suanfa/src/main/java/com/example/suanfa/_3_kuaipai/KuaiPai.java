@@ -1,50 +1,48 @@
 package com.example.suanfa._3_kuaipai;
 
-import java.util.Arrays;
-
+/**
+ * 快排，通过改变内容的方式，不产生新的数组
+ */
 public class KuaiPai {
 
-    public int[] quickSort(int[] arr) {
-        if (arr.length < 2) {
-            return arr;
+    public void quickSort(int[] arr, int low, int height) {
+        if (low >= height) {
+            return;
         }
-        int[] newArr = new int[arr.length];
-        int middle = arr[0];
-        int[] left = new int[0];
-        int[] right = new int[0];
-        for (int i = 1; i < arr.length; i++) {
-            if (middle > arr[i]) {
-                left = Arrays.copyOf(left, left.length + 1);
-                left[left.length - 1] = arr[i];
-            } else if (middle < arr[i]) {
-                right = Arrays.copyOf(right, right.length + 1);
-                right[right.length - 1] = arr[i];
+        int i = low;
+        int j = height;
+        int middle = arr[low];
+        while (i < j) {
+            //j-- 在上，i++在下，防止i多加一位
+            while (arr[j] >= middle && i < j) {
+                j--;
+            }
+            while (arr[i] <= middle && i < j) {
+                i++;
+            }
+            if (i < j) {
+                int temp = arr[j];
+                arr[j] = arr[i];
+                arr[i] = temp;
             }
         }
-        int[] leftRes = quickSort(left);
-        int[] rightRes = quickSort(right);
-        int ind = 0;
-        for (int i = 0; i < leftRes.length; i++) {
-            newArr[i] = leftRes[i];
-            ind++;
-        }
-        newArr[ind++] = middle;
-        for (int i = 0; i < rightRes.length; i++) {
-            newArr[ind + i] = rightRes[i];
-        }
-        return newArr;
+        arr[low] = arr[i];
+        arr[i] = middle;
+        quickSort(arr, low, i - 1);
+        quickSort(arr, i + 1, height);
     }
 
     public static void main(String[] args) {
         int size = 10000;
+        // int[] b = {4, 2, 3, 1};
         int[] a = new int[size];
         for (int i = size; i > 0; i--) {
             a[size - i] = i - 1;
         }
         long start = System.currentTimeMillis();
-        int[] sortArr = new KuaiPai().quickSort(a);
-        for (int i = 0; i < sortArr.length; i++) {
-            System.out.print(sortArr[i] + ",");
+        new KuaiPai().quickSort(a, 0, a.length - 1);
+        for (int i = 0; i < a.length; i++) {
+            System.out.print(a[i] + ",");
         }
         System.out.println();
         System.out.println("time:" + (System.currentTimeMillis() - start));
